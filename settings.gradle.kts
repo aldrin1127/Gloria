@@ -1,4 +1,4 @@
-rootProject.name = Artifact.APP_NAME
+rootProject.name = "Gloria"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
