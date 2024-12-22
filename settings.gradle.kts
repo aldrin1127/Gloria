@@ -15,8 +15,9 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "${Artifact.APP_NAME}"
+rootProject.name = "Gloria"
 include(
     ":android",
+    ":ios"
     ":shared"
 )
