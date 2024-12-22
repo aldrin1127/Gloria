@@ -1,12 +1,17 @@
 [versions]
+# Plugins
 agp            = "8.7.3"
 kotlin         = "2.1.0"
 compose-plugin = "1.7.3"
 
 [plugins]
-android-application  = { id = "com.android.application"            , version.ref = "agp"            }
-android-library      = { id = "com.android.library"                , version.ref = "agp"            }
+# Jetpack Compose
 compose-compiler     = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin"         }
-compose-plugin       = { id = "org.jetbrains.compose"              , version.ref = "compose-plugin" }
-kotlin-android       = { id = "org.jetbrains.kotlin.android"       , version.ref = "kotlin"         }
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform" , version.ref = "kotlin"         }
+compose       = { id = "org.jetbrains.compose"              , version.ref = "compose-plugin" }
+# MPP
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform" , version.ref = "kotlin" }
+# Android
+android-application  = { id = "com.android.application"                , version.ref = "agp"    }
+android-library      = { id = "com.android.library"                    , version.ref = "agp"    }
+kotlin-android       = { id = "org.jetbrains.kotlin.android"           , version.ref = "kotlin" }
+kotlin-android       = { id = "org.jetbrains.kotlin.android.extensions", version.ref = "kotlin" }

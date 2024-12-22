@@ -1,4 +1,3 @@
-rootProject.name = "Gloria"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -15,3 +14,9 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
+rootProject.name = "${Artifact.APP_NAME}"
+include(
+    ":android",
+    ":shared"
+)
