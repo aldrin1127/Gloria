@@ -18,6 +18,6 @@ dependencyResolutionManagement {
 rootProject.name = "Gloria"
 include(
     ":android",
-    ":ios"
+    ":ios"    ,
     ":shared"
 )
