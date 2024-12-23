@@ -11,8 +11,15 @@ plugins {
 
 @OptIn(ExperimentalComposeLibrary::class)
 kotlin {
-    applyDefaultHierarchyTemplate()
     androidTarget()
+    applyDefaultHierarchyTemplate {
+        common {
+            group("mobile") {
+                withAndroidTarget()
+                withIos()
+            }
+        }
+    }
 
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -51,6 +58,8 @@ kotlin {
                 api(libs.kotlin.test)
                 api(libs.kotlin.test.junit5)
                 api(libs.junit.jupiter)
+                @OptIn(ExperimentalComposeLibrary::class)
+                api(compose.uiTest)
             }
         }
     }
