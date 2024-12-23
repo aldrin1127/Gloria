@@ -1,34 +1,38 @@
 [versions]
-# Java
-jvm = "1.8"
-# Plugins
-agp            = "8.7.3"
-kotlin         = "2.1.0"
-compose-plugin = "1.7.3"
-# Android SDK
+# Runtime
+jvm    = "1.8"
+kotlin = "2.1.0"
+# Kotlin KSP
+ksp = "2.1.0-1.0.29"
+# Jetpack Compose
+compose = "1.7.3"
+# Android
+agp                 = "8.7.3"
 android-compile-sdk = "35"
-android-min-sdk     = "35"
-android-target-sdk  = "26"
+android-min-sdk     = "26"
+android-target-sdk  = "35"
+# LeakCanary
+leakcanary = "2.14"
 # Junit Jupiter
 junit-jupiter = "5.11.4"
 
 [plugins]
-# Jetpack Compose
-compose-compiler  = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin"         }
-jetbrains-compose = { id = "org.jetbrains.compose"              , version.ref = "compose-plugin" }
 # MPP
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform" , version.ref = "kotlin" }
+# Jetpack Compose
+jetbrains-compose = { id = "org.jetbrains.compose"              , version.ref = "compose" }
+kotlin-compose    = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin"  }
+# Kotlin KSP
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 # Android
-android-application = { id = "com.android.application"                , version.ref = "agp"    }
-android-library     = { id = "com.android.library"                    , version.ref = "agp"    }
-kotlin-android      = { id = "org.jetbrains.kotlin.android"           , version.ref = "kotlin" }
+android-application = { id = "com.android.application"     , version.ref = "agp"    }
+android-library     = { id = "com.android.library"         , version.ref = "agp"    }
+kotlin-android      = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+# LeakCanary
+leakcanary-deobfuscation = { id = "com.squareup.leakcanary.deobfuscation", version.ref = "leakcanary" }
 
 [libraries]
-# Kotlin
-kotlin-bom         = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
-kotlin-stdlib      = { module = "org.jetbrains.kotlin:kotlin-stdlib"      }
-kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
-# Kotlin Test
-kotlin-test        = { module = "org.jetbrains.kotlin:kotlin-test"        }
-kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5" }
-junit-jupiter      = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+# LeakCanary
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
+# Junit Jupiter
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
