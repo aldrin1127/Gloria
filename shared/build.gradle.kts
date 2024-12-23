@@ -1,5 +1,4 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -10,11 +9,12 @@ plugins {
 
 @OptIn(ExperimentalComposeLibrary::class)
 kotlin {
-    targetHierarchy.default()
+    applyDefaultHierarchyTemplate()
     androidTarget {
-	@OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilations.all {
-            kotlinOptions.jvmTarget = libs.versions.jvm.get()
+            compilerOptions {
+                jvmTarget.set(libs.versions.jvm.get())
+            }
         }
     }
 
@@ -38,13 +38,13 @@ kotlin {
                 api(compose.foundation)
                 api(compose.material3)
                 api(compose.ui)
-		@OptIn(ExperimentalComposeLibrary::class)
+                @OptIn(ExperimentalComposeLibrary::class)
                 api(compose.components.resources)
             }
         }
         val commonTest by getting {
-            dependsOn(commonMain)
             dependencies {
+                api(libs.kotlin.bom)
                 api(libs.kotlin.test)
                 api(libs.kotlin.test.junit5)
                 api(libs.junit.jupiter)
