@@ -1,8 +1,14 @@
 [versions]
+# Java
+jvm = "1.8"
 # Plugins
 agp            = "8.7.3"
 kotlin         = "2.1.0"
 compose-plugin = "1.7.3"
+# Android SDK
+android-compile-sdk = "35"
+android-min-sdk     = "35"
+android-target-sdk  = "26"
 
 [plugins]
 # Jetpack Compose
@@ -14,3 +20,9 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform" , version.ref
 android-application = { id = "com.android.application"                , version.ref = "agp"    }
 android-library     = { id = "com.android.library"                    , version.ref = "agp"    }
 kotlin-android      = { id = "org.jetbrains.kotlin.android"           , version.ref = "kotlin" }
+
+[libs]
+# Kotlin
+kotlin-bom         = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
+kotlin-stdlib      = { module = "org.jetbrains.kotlin:kotlin-stdlib"      }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
