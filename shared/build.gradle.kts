@@ -1,4 +1,5 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -10,11 +11,11 @@ plugins {
 @OptIn(ExperimentalComposeLibrary::class)
 kotlin {
     applyDefaultHierarchyTemplate()
+    androidTarget()
     androidTarget {
-        compilations.all {
-            compilerOptions {
-                jvmTarget.set(libs.versions.jvm.get())
-            }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(libs.versions.jvm.get())
         }
     }
 
