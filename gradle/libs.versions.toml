@@ -11,6 +11,7 @@ agp                 = "8.7.3"
 android-compile-sdk = "35"
 android-min-sdk     = "26"
 android-target-sdk  = "35"
+androidx-activity   = "1.9.3"
 # LeakCanary
 leakcanary = "2.14"
 # Junit Jupiter
@@ -32,6 +33,9 @@ kotlin-android      = { id = "org.jetbrains.kotlin.android", version.ref = "kotl
 leakcanary-deobfuscation = { id = "com.squareup.leakcanary.deobfuscation", version.ref = "leakcanary" }
 
 [libraries]
+# Android
+androidx-activity-ktx     = { module = "androidx.activity:activity-ktx",     version.ref = "androidx-activity" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 # LeakCanary
 leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 # Junit Jupiter

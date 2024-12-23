@@ -6,8 +6,6 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
-
     sourceSets {
         val androidMain by getting {
             dependencies {
@@ -71,6 +69,6 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.kotlin.get()
     }
     dataBinding {
-        enabled = true
+        isEnabled = true
     }
 }
