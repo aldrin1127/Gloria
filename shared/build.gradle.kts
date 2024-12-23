@@ -1,3 +1,6 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
@@ -5,9 +8,11 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+@OptIn(ExperimentalComposeLibrary::class)
 kotlin {
     targetHierarchy.default()
     androidTarget {
+	@OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilations.all {
             kotlinOptions.jvmTarget = libs.versions.jvm.get()
         }
@@ -32,8 +37,8 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material3)
-
                 api(compose.ui)
+		@OptIn(ExperimentalComposeLibrary::class)
                 api(compose.components.resources)
             }
         }
@@ -42,6 +47,7 @@ kotlin {
             dependencies {
                 api(libs.kotlin.test)
                 api(libs.kotlin.test.junit5)
+                api(libs.junit.jupiter)
             }
         }
     }
