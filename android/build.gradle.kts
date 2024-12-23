@@ -6,7 +6,6 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(libs.versions.jvm.get().toDouble())
     androidTarget()
 
     sourceSets {
@@ -33,8 +32,8 @@ android {
         applicationId = "${project.findProperty("APP_ID")}.android"
         minSdk        = libs.versions.android.min.sdk.get().toInt()
         targetSdk     = libs.versions.android.target.sdk.get().toInt()
-        versionCode   = project.findProperty("VERSION_CODE").toInt()
-	versionName   = project.findProperty("VERSION_NAME")
+        versionCode   = project.findProperty("VERSION_CODE") as Int
+	versionName   = project.findProperty("VERSION_NAME") as String
     }
     sourceSets["main"].apply {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -73,11 +72,5 @@ android {
     }
     dataBinding {
         enabled = true
-    }
-}
-
-leakCanary {
-    filterObfuscatedVariants {
-        it.name == "debug"
     }
 }
