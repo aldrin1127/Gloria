@@ -3,9 +3,11 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.leakcanary.deobfuscation)
+    kotlin("android")
 }
 
 kotlin {
+    androidTarget()
     sourceSets {
         val androidMain by getting {
             dependencies {
@@ -54,8 +56,6 @@ android {
         }
         getByName("debug") {
             isDebuggable = true
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-DEBUG"
         }
     }
     compileOptions {
