@@ -7,7 +7,7 @@ ksp = "2.1.0-1.0.29"
 # Jetpack Compose
 compose = "1.7.3"
 # Android
-agp                 = "8.7.3"
+agp                 = "8.6.1"
 android-compile-sdk = "35"
 android-min-sdk     = "26"
 android-target-sdk  = "35"
