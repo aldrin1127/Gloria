@@ -6,9 +6,7 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
-
-    androidTarget {}
+    android()
 
     sourceSets {
         val androidMain by getting {
@@ -66,12 +64,16 @@ android {
         targetCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
     }
     buildFeatures {
-        compose = true
+        compose     = true
+	dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlin.get()
     }
-    dataBinding {
-        isEnabled = true
+}
+
+leakCanary {
+    filterObfuscatedVariants { variant ->
+        variant.name == "debug"
     }
 }
