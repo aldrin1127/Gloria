@@ -7,6 +7,9 @@ plugins {
 
 kotlin {
     androidTarget()
+
+    androidTarget {}
+
     sourceSets {
         val androidMain by getting {
             dependencies {
@@ -38,16 +41,17 @@ android {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/res")
     }
-    packaging {
+    packagingOptions {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes   += "/META-INF/{AL2.0,LGPL2.1}"
+            pickFirsts += "**/*.pickFirst"
         }
     }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = true
+            isMinifyEnabled   = true
             isShrinkResources = true
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig     = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

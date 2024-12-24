@@ -80,11 +80,25 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.min.sdk.get().toInt()
     }
+    packagingOptions {
+        resources
+            excludes.addAll(
+                setOf(
+                    "META-INF/*"
+                    "META-INF/DEPENDENCIES"
+                    "META-INF/versions"
+                )
+            )
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
         targetCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
     }
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+    kotlin {
+        jvmToolchain(libs.versions.jvm.get().toDouble())
+    }
 }
 
 compose.resources {
