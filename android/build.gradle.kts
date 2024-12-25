@@ -9,8 +9,6 @@ plugins {
 }
 
 kotlin {
-    android()
-
     sourceSets {
         val androidMain by getting {
             dependencies {
