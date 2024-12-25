@@ -82,3 +82,12 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.kotlin.get()
     }
 }
+<<<<<<< HEAD
+=======
+
+leakCanary {
+    filterObfuscatedVariants { variant: BaseVariant ->
+        variant.name = "debug"
+    }
+}
+>>>>>>> refs/remotes/origin/main
