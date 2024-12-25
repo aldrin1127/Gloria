@@ -61,7 +61,8 @@ kotlin {
         val commonTest by getting {
             dependencies {
 		api(kotlin("test-junit5"))
-                api(libs.junit.jupiter)
+                api(libs.junit.jupiter.api)
+		runtimeOnly(libs.junit.jupiter.engine)
                 @OptIn(ExperimentalComposeLibrary::class)
                 api(compose.uiTest)
             }
@@ -81,14 +82,13 @@ android {
         minSdk = libs.versions.android.min.sdk.get().toInt()
     }
     packagingOptions {
-        resources
-            excludes.addAll(
-                setOf(
-                    "META-INF/*"
-                    "META-INF/DEPENDENCIES"
-                    "META-INF/versions"
-                )
+        resources {
+            excludes   += setOf(
+                "META-INF/*"           ,
+                "META-INF/DEPENDENCIES",
+                "META-INF/versions"
             )
+            pickFirsts += "**/*.pickFirst"
         }
     }
     compileOptions {

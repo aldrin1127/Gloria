@@ -1,7 +1,10 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.leakcanary.deobfuscation)
 }
 
@@ -16,10 +19,21 @@ kotlin {
                 api(libs.androidx.activity.compose)
             }
         }
+        val androidTest by getting {
+            dependencies {
+		api(project.shared)
+		api(libs.junit.jupiter.params)
+                @OptIn(ExperimentalComposeLibrary::class)
+                api(compose.uiTest)
+                api(compose.uiTestAndroid)
+            }
+        }
         val androidDebug by getting {
             dependencies {
-                api(compose.uiTooling)
                 api(libs.leakcanary.android)
+                @OptIn(ExperimentalComposeLibrary::class)
+                api(compose.uiTooling)
+		api(compose.uiTestManifest)
             }
         }
     }
@@ -41,8 +55,7 @@ android {
     }
     packagingOptions {
         resources {
-            excludes   += "/META-INF/{AL2.0,LGPL2.1}"
-            pickFirsts += "**/*.pickFirst"
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
     buildTypes {
@@ -73,7 +86,7 @@ android {
 }
 
 leakCanary {
-    filterObfuscatedVariants { variant ->
-        variant.name == "debug"
+    filterObfuscatedVariants {
+        it.name == "debug"
     }
 }
