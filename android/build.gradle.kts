@@ -1,3 +1,4 @@
+import com.android.build.gradle.api.BaseVariant
 import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
