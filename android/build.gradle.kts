@@ -21,11 +21,10 @@ kotlin {
         }
         val androidTest by getting {
             dependencies {
-		api(project.shared)
+		api(projects.shared)
 		api(libs.junit.jupiter.params)
                 @OptIn(ExperimentalComposeLibrary::class)
                 api(compose.uiTest)
-                api(compose.uiTestAndroid)
             }
         }
         val androidDebug by getting {
@@ -33,7 +32,6 @@ kotlin {
                 api(libs.leakcanary.android)
                 @OptIn(ExperimentalComposeLibrary::class)
                 api(compose.uiTooling)
-		api(compose.uiTestManifest)
             }
         }
     }
@@ -86,7 +84,7 @@ android {
 }
 
 leakCanary {
-    filterObfuscatedVariants {
-        it.name == "debug"
+    filterObfuscatedVariants { variant: BaseVariant ->
+        variant.name == "debug"
     }
 }
