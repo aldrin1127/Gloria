@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.leakcanary.deobfuscation)
 }
 
 kotlin {
@@ -81,11 +80,5 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlin.get()
-    }
-}
-
-leakCanary {
-    filterObfuscatedVariants { variant: BaseVariant ->
-        variant.name == "debug"
     }
 }

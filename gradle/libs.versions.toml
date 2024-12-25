@@ -1,13 +1,13 @@
 [versions]
 # Runtime
 jvm    = "1.8"
-kotlin = "2.1.0"
+kotlin = "2.1.20-Beta1"
 # Kotlin KSP
-ksp = "2.1.0-1.0.29"
+ksp = "2.1.20-Beta1-1.0.29"
 # Jetpack Compose
 compose = "1.7.3"
 # Android
-agp                 = "8.6.1"
+agp                 = "8.8.0-rc02"
 android-compile-sdk = "35"
 android-min-sdk     = "26"
 android-target-sdk  = "35"
@@ -29,8 +29,6 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-application = { id = "com.android.application"     , version.ref = "agp"    }
 android-library     = { id = "com.android.library"         , version.ref = "agp"    }
 kotlin-android      = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-# LeakCanary
-leakcanary-deobfuscation = { id = "com.squareup.leakcanary.deobfuscation", version.ref = "leakcanary" }
 
 [libraries]
 # Android
