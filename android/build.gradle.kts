@@ -86,6 +86,6 @@ android {
 
 leakCanary {
     filterObfuscatedVariants { variant: BaseVariant ->
-        variant.name == "debug"
+        variant.name = "debug"
     }
 }
