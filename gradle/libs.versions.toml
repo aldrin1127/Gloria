@@ -1,6 +1,6 @@
 [versions]
 # Runtime
-jvm    = "1.7
+jvm    = "1.7"
 kotlin = "2.1.0"
 # Kotlin KSP
 ksp = "2.1.0-1.0.29"
