@@ -1,49 +1,31 @@
-import com.android.build.gradle.api.BaseVariant
 import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.compose)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
+    androidTarget()
     sourceSets {
         val androidMain by getting {
             dependencies {
                 api(projects.shared)
-                api(libs.androidx.activity.ktx)
-                api(libs.androidx.activity.compose)
-            }
-        }
-        val androidTest by getting {
-            dependencies {
-		api(projects.shared)
-		api(libs.junit.jupiter.params)
-                @OptIn(ExperimentalComposeLibrary::class)
-                api(compose.uiTest)
-            }
-        }
-        val androidDebug by getting {
-            dependencies {
-                api(libs.leakcanary.android)
-                @OptIn(ExperimentalComposeLibrary::class)
-                api(compose.uiTooling)
             }
         }
     }
 }
 
 android {
-    namespace  = "${project.findProperty("APP_ID")}.android"
+    namespace  = "${findProperty("gloria.app.id")}.android"
     compileSdk = libs.versions.android.compile.sdk.get().toInt()
     defaultConfig {
-        applicationId = "${project.findProperty("APP_ID")}.android"
+        applicationId = "${findProperty("gloria.app.id")}.android"
         minSdk        = libs.versions.android.min.sdk.get().toInt()
         targetSdk     = libs.versions.android.target.sdk.get().toInt()
-        versionCode   = project.findProperty("VERSION_CODE") as Int
-	versionName   = project.findProperty("VERSION_NAME") as String
+        versionCode   = findProperty("gloria.app.versionCode") as Int
+	versionName   = findProperty("gloria.app.versionName") as String
     }
     sourceSets["main"].apply {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")

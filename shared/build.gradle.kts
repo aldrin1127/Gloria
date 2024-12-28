@@ -76,7 +76,7 @@ kotlin {
 }
 
 android {
-    namespace  = project.findProperty("APP_ID")
+    namespace  = findProperty("gloria.app.id")
     compileSdk = libs.versions.android.compile.sdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.min.sdk.get().toInt()
@@ -99,10 +99,12 @@ android {
     kotlin {
         jvmToolchain(libs.versions.jvm.get().toDouble())
     }
+    dependencies {
+    }
 }
 
 compose.resources {
     publicResClass    = true
-    packageOfResClass = "${project.findProperty("APP_ID")}.res"
+    packageOfResClass = "${findProperty("gloria.app.id")}.res"
     generateResClass  = always
 }

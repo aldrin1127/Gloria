@@ -1,13 +1,13 @@
 [versions]
 # Runtime
-jvm    = "1.8"
-kotlin = "2.1.20-Beta1"
+jvm    = "1.7
+kotlin = "2.1.0"
 # Kotlin KSP
-ksp = "2.1.20-Beta1-1.0.29"
+ksp = "2.1.0-1.0.29"
 # Jetpack Compose
 compose = "1.7.3"
 # Android
-agp                 = "8.8.0-rc02"
+agp                 = "8.7.3"
 android-compile-sdk = "35"
 android-min-sdk     = "26"
 android-target-sdk  = "35"
@@ -21,8 +21,8 @@ junit-jupiter = "5.11.4"
 # MPP
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform" , version.ref = "kotlin" }
 # Jetpack Compose
+compose-compiler  = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin"  }
 jetbrains-compose = { id = "org.jetbrains.compose"              , version.ref = "compose" }
-kotlin-compose    = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin"  }
 # Kotlin KSP
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 # Android
@@ -39,4 +39,3 @@ leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", ve
 # Junit Jupiter
 junit-jupiter-api    = { module = "org.junit.jupiter:junit-jupiter-api",    version.ref = "junit-jupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter" }
